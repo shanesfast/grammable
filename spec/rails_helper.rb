@@ -32,10 +32,23 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+CarrierWave.configure do |config|
+  config.root = Rails.root.join("test/fixtures/files")
+  config.cache_only = true
+  config.enable_processing = false
+  config.storage = :file
+end
+
+def after_teardown
+  super
+  CarrierWave.clean_cached_files!(0)
+end
+
 RSpec.configure do |config|
+
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
-  include ActionDispatch::TestProcess
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
