@@ -33,12 +33,17 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-CarrierWave.configure do |config|
-  config.root = Rails.root.join("test/fixtures/files")
-  config.cache_only = true
-  config.enable_processing = false
-  config.storage = :file
-end
+Fog.mock!
+Fog.credentials_path = Rails.root.join('config/fog_credentials.yml')
+connection = Fog::Storage.new(:provider => 'AWS')
+connection.directories.create(:key => 'grammable-sq')
+
+#CarrierWave.configure do |config|
+#  config.root = Rails.root.join("test/fixtures/files")
+#  config.cache_only = true
+#  config.enable_processing = false
+#  config.storage = :file
+#end
 
 def after_teardown
   super
@@ -46,7 +51,6 @@ def after_teardown
 end
 
 RSpec.configure do |config|
-
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
