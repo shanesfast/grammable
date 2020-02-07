@@ -1,24 +1,26 @@
-# README
+# GRAMMABLE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This web application is a simple social media type platform where you can create an account, upload a photo with a description, and comment on other photos that have been posted. You also have the ability to delete your posts. Feel free to fork this project and make it your own!
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Made with `Ruby 2.5.3` and `Rails ~> 5.2.3`<br />
+Dependencies managed with `Bundler version 2.0.2`
 
-* System dependencies
+Run:
+```bash
+bundle install
+```
+..to install dependencies. 
 
-* Configuration
+Then run the following commands to build the database:
 
-* Database creation
+```ruby
+rake db:create
+rake db:schema:load
+```
 
-* Database initialization
+That's it! Make it your own. 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
