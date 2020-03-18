@@ -1,5 +1,7 @@
 # GRAMMABLE
 
+![Grammable](https://i.imgur.com/WNTXCb2.png)
+
 This web application is a simple social media type platform where you can create an account, upload a photo with a description, and comment on other photos that have been posted. You also have the ability to delete your posts. Feel free to fork this project and make it your own!
 
 ## Installation
